@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    transition: background 1s;
+}
+
+body.open {
+    background: linear-gradient(to right, #008000, #adff2f);
+}
+
+body.closed {
+    background: linear-gradient(to right, #8b0000, #ff0000);
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+}
+
+.status-message {
+    font-size: 2em;
+}
