@@ -3,7 +3,7 @@ const express = require('express');
 const WebSocket = require('ws');
 const app = express();
 let status = 'closed';
-
+const PORT = process.env.PORT || 3000 ;
 const wss = new WebSocket.Server({ noServer: true });
 
 app.use(express.static('public'));
@@ -25,7 +25,7 @@ app.post('/status', (req, res) => {
     res.end();
 });
 
-const server = app.listen(3000, () => console.log('HTTP server running on port 3000'));
+const server = app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 server.on('upgrade', (request, socket, head) => {
     console.log('WebSocket connection');
