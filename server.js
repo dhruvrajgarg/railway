@@ -10,12 +10,12 @@ app.use(express.static('public'));
 app.use(express.text());
 
 app.get('/status', (req, res) => {
-    //console.log('GET /status');
+    console.log('GET /status');
     res.send(status);
 });
 
 app.post('/status', (req, res) => {
-    //console.log('POST /status');
+    console.log('POST /status');
     status = req.body;
     wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
