@@ -3,7 +3,7 @@ const statusElement = document.getElementById('status');
 const lastUpdatedElement = document.getElementById('last-updated');
 const bodyElement = document.body;
 const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-const ws = new WebSocket(`${protocol}//${location.host}`);
+const ws = new WebSocket(`${protocol}//${location.host}/public`);
 
 ws.onmessage = function(event) {
     console.log('WebSocket message', event.data);
