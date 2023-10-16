@@ -18,6 +18,6 @@ ws.onopen = function() {
     ws.send('getStatus');
 };
 
-ws.onerror = function(error) {
-    console.error(`WebSocket error: ${error}`);
-};
+// ws.onerror = function(error) {
+//     console.error(`WebSocket error: ${error}`);
+// };
