@@ -33,3 +33,12 @@ server.on('upgrade', (request, socket, head) => {
         wss.emit('connection', ws, request);
     });
 });
+
+
+wss.on('connection', ws => {
+    ws.on('message', message => {
+        if (message === 'getStatus') {
+            ws.send(status);
+        }
+    });
+});
