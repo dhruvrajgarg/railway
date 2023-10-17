@@ -24,7 +24,7 @@ const database = firebase.database();
 // Listen for changes to the status
 database.ref('status').on('value', (snapshot) => {
   const status = snapshot.val();
-  statusElement.textContent = `The barrier is ${status}`;
+  statusElement.textContent = `The barrier is ${status}.`;
   bodyElement.className = status;
   lastUpdatedElement.textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
 });
