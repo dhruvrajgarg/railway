@@ -1,8 +1,26 @@
 // private.js
-document.getElementById('open').onclick = function() {
-    fetch('/status', { method: 'POST', body: 'open' });
+document.getElementById('close').onclick = function() {
+    const currentTime = new Date().toISOString();
+    const data = JSON.stringify({ status: 'closed', timestamp: currentTime });
+
+    fetch('/status', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: data
+    });
 };
 
-document.getElementById('close').onclick = function() {
-    fetch('/status', { method: 'POST', body: 'closed' });
+document.getElementById('open').onclick = function() {
+    const currentTime = new Date().toISOString();
+    const data = JSON.stringify({ status: 'open', timestamp: currentTime });
+
+    fetch('/status', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: data
+    });
 };

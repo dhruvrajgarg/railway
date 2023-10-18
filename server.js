@@ -2,9 +2,13 @@
 const express = require('express');
 const admin = require('firebase-admin');
 const app = express();
+var bodyParser = require('body-parser')
 
 app.use(express.static('public'));
 app.use(express.text());
+
+// parse application/json
+app.use(bodyParser.json())
 
 // Paste your Firebase configuration here
 const serviceAccount = require('./public/keys/railway-crossing-firebase-adminsdk-uk799-c0ba9b9b55.json');
@@ -20,7 +24,6 @@ const database = admin.database();
 
 app.post('/status', (req, res) => {
   const status = req.body;
-
   // Update the status in the database
   database.ref('status').set(status, (error) => {
     if (error) {
