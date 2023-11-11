@@ -3,6 +3,7 @@ const express = require('express');
 const admin = require('firebase-admin');
 const app = express();
 var bodyParser = require('body-parser')
+require('dotenv').config()
 
 app.use(express.static('public'));
 app.use(express.text());
