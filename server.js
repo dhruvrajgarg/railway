@@ -1,17 +1,15 @@
 // server.js
 const express = require('express');
 const admin = require('firebase-admin');
+const bodyParser = require('body-parser');
 const app = express();
-var bodyParser = require('body-parser')
-require('dotenv').config()
+require('dotenv').config();
 
 app.use(express.static('public'));
 app.use(express.text());
+app.use(bodyParser.json());
 
-// parse application/json
-app.use(bodyParser.json())
-
-// Paste your Firebase configuration here
+// Firebase configuration
 const serviceAccount = require('./public/keys/railway-crossing-firebase-adminsdk-uk799-c0ba9b9b55.json');
 
 // Initialize Firebase
@@ -35,6 +33,12 @@ app.post('/status', (req, res) => {
       res.end();
     }
   });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
 const PORT = process.env.PORT || 3000;

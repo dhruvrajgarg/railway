@@ -24,10 +24,18 @@ const database = firebase.database();
 // Listen for changes to the status
 database.ref('status').on('value', (snapshot) => {
   const data = snapshot.val();
-  const status = data.status;
-  const timestamp = data.timestamp;
-  const date = new Date(timestamp);
-  statusElement.textContent = `The barrier is ${status}.`;
-  bodyElement.className = status;
-  lastUpdatedElement.textContent = `Last updated: ${date.toLocaleString()}`;
+  console.log("Fetched data:", data);  // Debug log
+  if (data) {
+    // Rest of your code...
+    const status = data.status;
+    const timestamp = data.timestamp;
+    const date = new Date(timestamp);
+    statusElement.textContent = `The barrier is ${status}.`;
+    bodyElement.className = status;
+    lastUpdatedElement.textContent = `Last updated: ${date.toLocaleString()}`;
+  } else {
+    console.log("No data available"); // Debug log
+  }
+}, (error) => {
+  console.error("Error fetching data:", error); // Error log
 });
