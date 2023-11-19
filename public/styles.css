@@ -1,9 +1,15 @@
+/* Base Styles */
 body {
     font-family: Arial, sans-serif;
     color: white;
     text-align: center;
     padding: 20px;
     transition: background 1s;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 body.open {
@@ -16,14 +22,47 @@ body.closed {
 
 .container {
     max-width: 600px;
+    width: 90%; /* Responsive width */
     margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
 }
 
 h1 {
     font-size: 2.5em;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .status-message {
-    font-size: 2em;
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2em;
+    }
+
+    .status-message {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2em; /* Larger font size for smaller screens */
+        margin-bottom: 20px;
+    }
+
+    .status-message {
+        font-size: 1.2em; /* Increased font size for better readability */
+    }
 }
